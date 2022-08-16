@@ -79,7 +79,7 @@ In a typical OHTTP transaction, Clients receive an Encapsulated Response
 from the Oblivious Gateway Resource containing a response from the Target
 Resource. This is useful for applications that require a response from the
 Target Resource. However, there are many settings in which Clients do not require
-a response from the Target Resource, including, but not limited to: privacy-preserving data 
+a response from the Target Resource, including, but not limited to: privacy-preserving data
 collection {{?STAR=I-D.dss-star}}, publish-subscribe applications, and more generally
 applications which unreliably "fire and forget" data to targets. Beyond these application
 use cases, unreliable requests also enable the relay to play a more active role towards
@@ -109,7 +109,7 @@ information, including their IP address. STAR can use OHTTP to send client repor
 but it requires the Oblivious Gateway Resource to produce an encrypted acknowledgement
 to the clients for every report.
 
-Depending on the Oblivious Gateway Resource implementation and scale of deployment, 
+Depending on the Oblivious Gateway Resource implementation and scale of deployment,
 this can lead to reduced performance. It also requires the Oblivious Gateway Resource to
 have access to the private key necessary to process the Encapsulated Request carrying
 a report and produce a response.
@@ -142,7 +142,7 @@ more difficult, this is sometimes a necessary function for differential privacy 
 
 Unreliable OHTTP extends the basic OHTTP protocol in the following ways:
 
-1. It introduces a new Media Type for unreliable OHTTP responses that represent a 
+1. It introduces a new Media Type for unreliable OHTTP responses that represent a
    "request acknowledgement message." A 202 Accepted response with this Content-Type
    signals that the corresponding Encapsulated Request was accepted and will be processed later.
 1. It extends Client and Oblivious Relay Resource behavior to expect with 202 Accepted
@@ -169,7 +169,7 @@ This end-to-end interaction is shown below.
      | Acknowledgement |                    |              |
      |<----------------+                    |              |
      |                 |                    |              |
-    
+
     ..........................................................
 
      |                 | Gateway            |              |
@@ -182,7 +182,7 @@ This end-to-end interaction is shown below.
      |                 |    Acknowledgement |              |
      |                 |<-------------------+              |
      |                 |                    |              |
-    
+
     ..........................................................
 
      |                 |                    | Request      |
@@ -196,7 +196,7 @@ This end-to-end interaction is shown below.
 
 A Client interacts with the Oblivious Relay Resource by constructing an
 Encapsulated Request as described in {{OHTTP}}. This Encapsulated Request
-is included as the content of a POST request to the Oblivious Relay Resource. 
+is included as the content of a POST request to the Oblivious Relay Resource.
 Importantly, this request MUST include the "message/ohttp-ack" Media Type
 in the Accept header (see {{iana-ack}}). The Client receives a 202 Accepted
 response with content type "message/ohttp-ack" and empty body upon successful
@@ -214,7 +214,7 @@ decapsulation and processing at some point in the future.
 ## Request Buffering
 
 Unreliable OHTTP allows both the Oblivious Relay Resource and Oblivious Gateway Resource
-to buffer Encapsulated Requests for transmission and processing. 
+to buffer Encapsulated Requests for transmission and processing.
 
 [[TODO: insert guidance for how both relays and gateways should buffer these things]]
 
@@ -228,11 +228,11 @@ using unreliable OHTTP should tolerate some amount of data loss.
 
 # Security Considerations {#security}
 
-Unreliable OHTTP does not change the security or privacy profile of OHTTP since an Oblivious 
-Relay Resource and Oblivious Gateway Resource could always reply with non-2xx and no body 
+Unreliable OHTTP does not change the security or privacy profile of OHTTP since an Oblivious
+Relay Resource and Oblivious Gateway Resource could always reply with non-2xx and no body
 to clients. Nevertheless, unreliable OHTTP is only appropriate for applications that do not
 require explicit confirmation of response or otherwise require privacy amplification by the
-Oblivious Relay Resource. 
+Oblivious Relay Resource.
 
 # IANA Considerations
 
