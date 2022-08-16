@@ -9,18 +9,18 @@ number:
 date:
 consensus: true
 v: 3
-area: SEC
-workgroup: OHAI
+area: "Security"
+workgroup: "Oblivious HTTP Application Intermediation"
 keyword:
  - oblivious
  - unreliable
 venue:
-  group: OHAI
-  type: Working Group
-  mail: ohai@ietf.org
-  arch: https://datatracker.ietf.org/wg/ohai/documents/
-  github: chris-wood/draft-unreliable-ohttp
-  latest: https://example.com/LATEST
+  group: "Oblivious HTTP Application Intermediation"
+  type: "Working Group"
+  mail: "ohai@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/ohai/"
+  github: "chris-wood/draft-unreliable-ohttp"
+  latest: "https://chris-wood.github.io/draft-unreliable-ohttp/draft-wood-ohai-unreliable-ohttp.html"
 
 author:
  -
