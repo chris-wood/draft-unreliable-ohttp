@@ -41,7 +41,7 @@ Beyond enabling application uses that do not require explicit responses
 from the Target, such as privacy-preserving data collection, this
 extension allows the Oblivious Relay Resource to buffer, batch, and
 shuffle requests to Oblivious Gateway Resources as a way of amplifying
-end-to-end privacy protections in place.
+end-to-end client privacy protections.
 
 --- middle
 
