@@ -10,9 +10,11 @@
 /.refcache
 /.targets.mk
 /.vscode/
+/lib
 /node_modules/
 /versioned/
 Gemfile.lock
 archive.json
+draft-wood-ohai-unreliable-ohttp.xml
 package-lock.json
 report.xml
