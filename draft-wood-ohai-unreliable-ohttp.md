@@ -68,7 +68,7 @@ end-to-end privacy protections in place.
 # Introduction
 
 A typical HTTP transaction consists of a request and response between
-a Client and Target Resource. Oblivious HTTP ({!OHTTP=I-D.ietf-ohai-oblivious-http})
+a Client and Target Resource. Oblivious HTTP ({{!OHTTP=I-D.ietf-ohai-ohttp}})
 adds an Oblivious Relay Resource and Oblivious Gateway Resource between
 Client and Target Resource. An OHTTP transaction through the Oblivious Relay
 Resource to the Oblivious Gateway Resource decouples the identity of the Client,
@@ -226,7 +226,7 @@ processed by the Oblivious Gateway Resource. Moreover, Clients cannot implement 
 of retry mechanism in the event that their requests are too old. This means that applications
 using unreliable OHTTP should tolerate some amount of data loss.
 
-# Security Considerations
+# Security Considerations {#security}
 
 Unreliable OHTTP does not change the security or privacy profile of OHTTP since an Oblivious 
 Relay Resource and Oblivious Gateway Resource could always reply with non-2xx and no body 
