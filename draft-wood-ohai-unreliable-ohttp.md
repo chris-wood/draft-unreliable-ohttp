@@ -191,13 +191,6 @@ Resource MUST reply with a 202 Accepted response with the "message/ohttp-ack"
 content type to the Oblivious Relay Resource and buffer the request for
 decapsulation and processing at some point in the future.
 
-## Request Buffering
-
-Unreliable OHTTP allows both the Oblivious Relay Resource and Oblivious Gateway Resource
-to buffer Encapsulated Requests for transmission and processing.
-
-[[TODO: insert guidance for how both relays and gateways should buffer these things]]
-
 ## Client Considerations
 
 By the nature of this extension, unreliable OHTTP has some limitations for applications.
@@ -206,13 +199,38 @@ processed by the Oblivious Gateway Resource. Moreover, Clients cannot implement 
 of retry mechanism in the event that their requests are too old. This means that applications
 using unreliable OHTTP should tolerate some amount of data loss.
 
+## Relay Considerations
+
+Unreliable OHTTP allows the Oblivious Relay Resource to buffer Encapsulated Requests
+for future transmission to an Oblivious Gateway Resource. The relay can choose to
+buffer Client requests until a sufficiently large number of requests is reached
+and then send all requests in a single batch to the gateway. Additionally, the relay
+can shuffle requests before forwarding them to the gateway.
+
+The choice of minimum buffer size is an implementation detail. Relays should take care
+to not introduce too much delay between when a request was received and when it is
+forwarded. Such delay may cause the gateway to drop the request due to a variety
+of reasons, e.g., because the gateway configuration changed or rotated or the decapsulated
+request became too old.
+
+## Gateway Considerations
+
+Similar to the Oblivious Relay Resource, the Oblivious Gateway Resource can buffer
+requests for future processing. This can be helpful if the key material needed to
+process each request is isolated to a different process. Similar to the relay,
+the choice of how to buffer incoming requests is an implementation decision, and
+any delay in processing a request can increase the likelihood that the request
+is dropped or discarded due to it being stale.
+
 # Security Considerations {#security}
 
-Unreliable OHTTP does not change the security or privacy profile of OHTTP since an Oblivious
-Relay Resource and Oblivious Gateway Resource could always reply with non-2xx and no body
-to clients. Nevertheless, unreliable OHTTP is only appropriate for applications that do not
+Unreliable OHTTP does not change the security profile of OHTTP since an Oblivious Relay
+Resource and Oblivious Gateway Resource could always reply with non-2xx and no body to
+clients. Nevertheless, unreliable OHTTP is only appropriate for applications that do not
 require explicit confirmation of response or otherwise require privacy amplification by the
 Oblivious Relay Resource.
+
+
 
 # IANA Considerations
 
