@@ -24,9 +24,14 @@ venue:
 
 author:
  -
+    fullname: Ralph Giles
+    organization: Brave
+    email: giles@thaumas.net
+ -
     fullname: Christopher A. Wood
     organization: Cloudflare
     email: caw@heapingbits.net
+
 
 normative:
 
@@ -52,11 +57,11 @@ a Client and Target Resource. Oblivious HTTP ({{!OHTTP=I-D.ietf-ohai-ohttp}})
 adds an Oblivious Relay Resource and Oblivious Gateway Resource between
 Client and Target Resource. An OHTTP transaction through the Oblivious Relay
 Resource to the Oblivious Gateway Resource decouples the identity of the Client,
-i.e.g, its IP address, from the request to the Target Resource. Only the Client
+i.e. its IP address, from the request to the Target Resource. Only the Client
 knows both its identity and the contents of the Target Resource request.
 
 In a typical OHTTP transaction, Clients receive an Encapsulated Response
-from the Oblivious Gateway Resource containing a response from the Target
+from the Oblivious Gateway Resource containing the response from the Target
 Resource. This is useful for applications that require a response from the
 Target Resource. However, there are many settings in which Clients do not require
 a response from the Target Resource, including, but not limited to: privacy-preserving data
@@ -101,7 +106,7 @@ to any private key material.
 
 ## Relay Privacy Protections
 
-In OHTTP, the Oblivious Relay Resource is simply forwards Encapuslated Requests and
+In OHTTP, the Oblivious Relay Resource simply forwards Encapuslated Requests and
 Encapsulated Responses between Client and Oblivious Gateway Resource. Depending on the
 implementation, the Oblivious Relay Resource can introduce delays before forwarding
 each request or response. This can help mitigate traffic analysis by passive eavesdroppers
