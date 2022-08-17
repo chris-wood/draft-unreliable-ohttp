@@ -24,13 +24,13 @@ venue:
 
 author:
  -
-    fullname: Christopher A. Wood
-    organization: Cloudflare
-    email: caw@heapingbits.net
- -
     fullname: Ralph Giles
     organization: Brave
     email: giles@thaumas.net
+ -
+    fullname: Christopher A. Wood
+    organization: Cloudflare
+    email: caw@heapingbits.net
 
 
 normative:
