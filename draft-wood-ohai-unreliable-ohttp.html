@@ -5,6 +5,7 @@
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
 <title>An Unreliable Oblivious HTTP Extension</title>
+<meta content="Ralph Giles" name="author">
 <meta content="Christopher A. Wood" name="author">
 <meta content="
        This document describes an extension to Oblivious HTTP (OHTTP) that
@@ -1046,7 +1047,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <td class="right">August 2022</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Wood</td>
+<td class="left">Giles &amp; Wood</td>
 <td class="center">Expires 18 February 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1066,8 +1067,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
 <dd class="expires"><time datetime="2023-02-18">18 February 2023</time></dd>
-<dt class="label-authors">Author:</dt>
+<dt class="label-authors">Authors:</dt>
 <dd class="authors">
+<div class="author">
+      <div class="author-name">R. Giles</div>
+<div class="org">Brave</div>
+</div>
 <div class="author">
       <div class="author-name">C. A. Wood</div>
 <div class="org">Cloudflare</div>
@@ -1207,7 +1212,7 @@ end-to-end client privacy protections.<a href="#section-abstract-1" class="pilcr
             <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1223,10 +1228,10 @@ a Client and Target Resource. Oblivious HTTP (<span>[<a href="#OHTTP" class="xre
 adds an Oblivious Relay Resource and Oblivious Gateway Resource between
 Client and Target Resource. An OHTTP transaction through the Oblivious Relay
 Resource to the Oblivious Gateway Resource decouples the identity of the Client,
-i.e.g, its IP address, from the request to the Target Resource. Only the Client
+i.e. its IP address, from the request to the Target Resource. Only the Client
 knows both its identity and the contents of the Target Resource request.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">In a typical OHTTP transaction, Clients receive an Encapsulated Response
-from the Oblivious Gateway Resource containing a response from the Target
+from the Oblivious Gateway Resource containing the response from the Target
 Resource. This is useful for applications that require a response from the
 Target Resource. However, there are many settings in which Clients do not require
 a response from the Target Resource, including, but not limited to: privacy-preserving data
@@ -1278,7 +1283,7 @@ to any private key material.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
         <h3 id="name-relay-privacy-protections">
 <a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-relay-privacy-protections" class="section-name selfRef">Relay Privacy Protections</a>
         </h3>
-<p id="section-2.2-1">In OHTTP, the Oblivious Relay Resource is simply forwards Encapuslated Requests and
+<p id="section-2.2-1">In OHTTP, the Oblivious Relay Resource simply forwards Encapuslated Requests and
 Encapsulated Responses between Client and Oblivious Gateway Resource. Depending on the
 implementation, the Oblivious Relay Resource can introduce delays before forwarding
 each request or response. This can help mitigate traffic analysis by passive eavesdroppers
@@ -1641,9 +1646,17 @@ and "message/ohttp-ack" (<a href="#iana-ack" class="xref">Section 6.1</a>).<a hr
 </div>
 <div id="authors-addresses">
 <section id="appendix-B">
-      <h2 id="name-authors-address">
-<a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Ralph Giles</span></div>
+<div dir="auto" class="left"><span class="org">Brave</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:giles@thaumas.net" class="email">giles@thaumas.net</a>
+</div>
+</address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Christopher A. Wood</span></div>
 <div dir="auto" class="left"><span class="org">Cloudflare</span></div>
