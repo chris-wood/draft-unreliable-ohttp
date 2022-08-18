@@ -1,0 +1,97 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2022-08-18T00:01:42.139006+00:00",
+  "repo": "chris-wood/draft-unreliable-ohttp",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOH1ALCM49VhcS",
+      "title": "Add Ralph Giles as an author",
+      "url": "https://github.com/chris-wood/draft-unreliable-ohttp/pull/1",
+      "state": "MERGED",
+      "author": "rillian",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Also very minor editorial",
+      "createdAt": "2022-08-17T16:18:57Z",
+      "updatedAt": "2022-08-17T17:13:55Z",
+      "baseRepository": "chris-wood/draft-unreliable-ohttp",
+      "baseRefName": "main",
+      "baseRefOid": "87e5aff8a322a589ee62ef537235bc7552a10dbc",
+      "headRepository": "rillian/draft-unreliable-ohttp",
+      "headRefName": "authorship",
+      "headRefOid": "e88eee65c7a6a5a84cbbc1e2a6f6978aa1e95739",
+      "closedAt": "2022-08-17T16:24:22Z",
+      "mergedAt": "2022-08-17T16:24:22Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "545d444cc1187c8a5b6e19e202772f9f73984379"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOH1ALCM5AI12z",
+          "commit": {
+            "abbreviatedOid": "e88eee6"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-08-17T16:24:17Z",
+          "updatedAt": "2022-08-17T16:24:17Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
+}
