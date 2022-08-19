@@ -64,11 +64,11 @@ In a typical OHTTP transaction, Clients receive an Encapsulated Response
 from the Oblivious Gateway Resource containing the response from the Target
 Resource. This is useful for applications that require a response from the
 Target Resource. However, there are many settings in which Clients do not require
-a response from the Target Resource, including, but not limited to: privacy-preserving data
+a response from the Target Resource, including privacy-preserving data
 collection {{?STAR=I-D.dss-star}}, publish-subscribe applications, and more generally
-applications which unreliably "fire and forget" data to targets. Beyond these application
-use cases, unreliable requests also enable the relay to play a more active role towards
-improving client privacy, e.g., by batching, buffering, and shuffling requests to
+applications which submit data under a "best effort" policy. Beyond these application
+use cases, unreliable requests also allow the relay to play a more active role towards
+improving client privacy, e.g. by batching, buffering, and shuffling requests to
 mitigate traffic analysis by network eavesdroppers or amplify local differential privacy
 protections used by clients {{?LOCALDP=DOI.10.48550/arXiv.1811.12469}}.
 
