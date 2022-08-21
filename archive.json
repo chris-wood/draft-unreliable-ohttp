@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-08-18T00:01:42.139006+00:00",
+  "timestamp": "2022-08-21T00:01:42.664362+00:00",
   "repo": "chris-wood/draft-unreliable-ohttp",
   "labels": [
     {
@@ -92,6 +92,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOH1ALCM49fKUP",
+      "title": "Document 406 Not Acceptable",
+      "url": "https://github.com/chris-wood/draft-unreliable-ohttp/pull/2",
+      "state": "OPEN",
+      "author": "rillian",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Recommend Relay and Gateway use the `406 Not Acceptable` status code to signal unreliable OHTTP as a requirement to the Client.\r\n\r\nAlso some more editoral.",
+      "createdAt": "2022-08-19T21:28:38Z",
+      "updatedAt": "2022-08-19T21:28:38Z",
+      "baseRepository": "chris-wood/draft-unreliable-ohttp",
+      "baseRefName": "main",
+      "baseRefOid": "545d444cc1187c8a5b6e19e202772f9f73984379",
+      "headRepository": "rillian/draft-unreliable-ohttp",
+      "headRefName": "406",
+      "headRefOid": "b21988c476e6031984b90f220ad3babf4de0c6a2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
