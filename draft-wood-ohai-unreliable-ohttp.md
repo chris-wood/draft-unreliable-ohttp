@@ -187,9 +187,7 @@ in the Accept header (see {{iana-ack}}). The Client receives a `202 Accepted`
 response with content type "message/ohttp-ack" and an empty body upon successful
 transmission of the request. If the Accept header also allows the normal
 "message/bhttp" content type, the client has left the choice of reliable or
-unreliable delivery up to the Relay and Gateway Resources, which may
-return "200 OK" along with an Encapsulated Body instead.
-Any other response is considered invalid.
+unreliable delivery up to the Relay and Gateway Resources.
 
 Upon receipt of an unreliable OHTTP request from the Client, the Oblivious
 Relay Resource MUST reply with a `202 Accepted` response with the "message/ohttp-ack"
