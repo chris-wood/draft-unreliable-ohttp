@@ -247,7 +247,7 @@ is dropped or discarded due to it being stale.
 
 If an Oblivious Gateway Resource requires unreliable delivery for a
 request, by implementation constraint or policy, it SHOULD respond
-with `406 Not Acceptable` to any requests which require return of an
+with `406 Not Acceptable` to any requests which require reliable return of an
 Encapsulated Response. The Relay Resource will forward this to the
 Client, which can fail or retry with unreliable delivery according to
 its own requirements.
