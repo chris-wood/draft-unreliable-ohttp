@@ -5,8 +5,8 @@
 Oblivious HTTP Application Intermediation                       R. Giles
 Internet-Draft                                                     Brave
 Intended status: Informational                                C. A. Wood
-Expires: 18 February 2023                                     Cloudflare
-                                                          17 August 2022
+Expires: 23 February 2023                                     Cloudflare
+                                                          22 August 2022
 
 
                  An Unreliable Oblivious HTTP Extension
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 February 2023.
+   This Internet-Draft will expire on 23 February 2023.
 
 Copyright Notice
 
@@ -107,14 +107,14 @@ Table of Contents
    from the Target Resource.  This is useful for applications that
    require a response from the Target Resource.  However, there are many
    settings in which Clients do not require a response from the Target
-   Resource, including, but not limited to: privacy-preserving data
-   collection [STAR], publish-subscribe applications, and more generally
-   applications which unreliably "fire and forget" data to targets.
-   Beyond these application use cases, unreliable requests also enable
-   the relay to play a more active role towards improving client
-   privacy, e.g., by batching, buffering, and shuffling requests to
-   mitigate traffic analysis by network eavesdroppers or amplify local
-   differential privacy protections used by clients [LOCALDP].
+   Resource, including privacy-preserving data collection [STAR],
+   publish-subscribe applications, and more generally applications which
+   submit data under a "best effort" policy.  Beyond these application
+   use cases, unreliable requests also allow the relay to play a more
+   active role towards improving client privacy, e.g. by batching,
+   buffering, and shuffling requests to mitigate traffic analysis by
+   network eavesdroppers or amplify local differential privacy
+   protections used by clients [LOCALDP].
 
    This document describes an extension to OHTTP that supports
    unreliable requests.  An unreliable request is one wherein the client
@@ -191,8 +191,8 @@ Table of Contents
        processed later.
 
    2.  It extends Client and Oblivious Relay Resource behavior to expect
-       with 202 Accepted responses when Clients opt in to receive
-       unreliable OHTTP responses.
+       202 Accepted responses when Clients opt in to receive unreliable
+       OHTTP responses.
 
    At a high level, an unreliable OHTTP request can be accepted by
    either the Oblivious Relay Resource or Oblivious Gateway Resource.
@@ -246,18 +246,21 @@ Table of Contents
    Relay Resource.  Importantly, this request MUST include the "message/
    ohttp-ack" Media Type in the Accept header (see Section 6.1).  The
    Client receives a 202 Accepted response with content type "message/
-   ohttp-ack" and empty body upon successful transmission of the
-   request.  Any other response is considered invalid.
+   ohttp-ack" and an empty body upon successful transmission of the
+   request.  If the Accept header also allows the normal "message/bhttp"
+   content type, the client has left the choice of reliable or
+   unreliable delivery up to the Relay and Gateway Resources.
 
    Upon receipt of an unreliable OHTTP request from the Client, the
    Oblivious Relay Resource MUST reply with a 202 Accepted response with
-   the "message/ohttp-ack" content type to the Client and buffer the
-   request to be sent to the Oblivious Gateway Resource at some point in
-   the future.  Similarly, upon receipt of an unreliable OHTTP request
-   from the Oblivious Relay Resource, the Oblivious Gateway Resource
-   MUST reply with a 202 Accepted response with the "message/ohttp-ack"
-   content type to the Oblivious Relay Resource and buffer the request
-   for decapsulation and processing at some point in the future.
+   the "message/ohttp-ack" content type to the Client.  It can buffer
+   the request to be sent to the Oblivious Gateway Resource at some
+   point in the future, or choose to forward it immediately.  Similarly,
+   upon receipt of an unreliable OHTTP request from the Oblivious Relay
+   Resource, the Oblivious Gateway Resource MUST reply with a 202
+   Accepted response and the "message/ohttp-ack" content type to the
+   Oblivious Relay Resource and buffer the request for decapsulation and
+   processing at some point in the future.
 
 4.1.  Client Considerations
 
@@ -269,6 +272,13 @@ Table of Contents
    This means that applications using unreliable OHTTP should tolerate
    some amount of data loss.
 
+   If a Client does not specify unreliable delivery by setting a
+   compatible Accept header in its request, and receives a 406 Not
+   Acceptable status code in the response from the Relay Resource, this
+   means that the OHTTP configuration for that request only supports
+   unreliable OHTTP.  The client MAY then retry, this time allowing
+   unreliable delivery.
+
 4.2.  Relay Considerations
 
    Unreliable OHTTP allows the Oblivious Relay Resource to buffer
@@ -276,7 +286,8 @@ Table of Contents
    Resource.  The relay can choose to buffer Client requests until a
    sufficiently large number of requests is reached and then send all
    requests in a single batch to the gateway.  Additionally, the relay
-   can shuffle requests before forwarding them to the gateway.
+   can shuffle requests before forwarding them to the gateway to further
+   obscure the request timing.
 
    The choice of minimum buffer size is an implementation detail.
    Relays should take care to not introduce too much delay between when
@@ -284,6 +295,14 @@ Table of Contents
    cause the gateway to drop the request due to a variety of reasons,
    e.g., because the gateway configuration changed or rotated or the
    decapsulated request became too old.
+
+   A Relay which supports unreliable OHTTP may be configured to enforce
+   unreliable delivery.  In such cases, if the Relay receives a normal
+   OHTTP request, i.e., without an Accept header matching "message/
+   ohttp-ack", it SHOULD respond with 406 Not Acceptable to signal this
+   requirement to the client.  If a Relay has forwarded an Encapsulated
+   Request and receives a 406 Not Acceptable response, it MUST return
+   the same status code in its response to the Client.
 
 4.3.  Gateway Considerations
 
@@ -294,6 +313,13 @@ Table of Contents
    how to buffer incoming requests is an implementation decision, and
    any delay in processing a request can increase the likelihood that
    the request is dropped or discarded due to it being stale.
+
+   If an Oblivious Gateway Resource requires unreliable delivery for a
+   request, by implementation constraint or policy, it SHOULD respond
+   with 406 Not Acceptable to any requests which require reliable return
+   of an Encapsulated Response.  The Relay Resource will forward this to
+   the Client, and the Client can then fail or retry with unreliable
+   delivery according to its own requirements.
 
 5.  Security Considerations
 

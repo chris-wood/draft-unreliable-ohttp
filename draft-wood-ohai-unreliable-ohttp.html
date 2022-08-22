@@ -16,12 +16,12 @@ extension allows the Oblivious Relay Resource to buffer, batch, and
 shuffle requests to Oblivious Gateway Resources as a way of amplifying
 end-to-end client privacy protections. 
     " name="description">
-<meta content="xml2rfc 3.13.1" name="generator">
+<meta content="xml2rfc 3.14.0" name="generator">
 <meta content="oblivious" name="keyword">
 <meta content="unreliable" name="keyword">
 <meta content="draft-wood-ohai-unreliable-ohttp-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.13.1
+  xml2rfc 3.14.0
     Python 3.10.5
     appdirs 1.4.4
     ConfigArgParse 1.5.3
@@ -33,7 +33,6 @@ end-to-end client privacy protections.
     lxml 4.9.1
     MarkupSafe 2.1.1
     pycountry 22.3.5
-    pyflakes 2.4.0
     PyYAML 6.0
     requests 2.27.1
     setuptools 59.4.0
@@ -1048,7 +1047,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Giles &amp; Wood</td>
-<td class="center">Expires 18 February 2023</td>
+<td class="center">Expires 23 February 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1061,12 +1060,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-wood-ohai-unreliable-ohttp-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-08-17" class="published">17 August 2022</time>
+<time datetime="2022-08-22" class="published">22 August 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-02-18">18 February 2023</time></dd>
+<dd class="expires"><time datetime="2023-02-23">23 February 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1126,7 +1125,7 @@ end-to-end client privacy protections.<a href="#section-abstract-1" class="pilcr
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 February 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 23 February 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1234,11 +1233,11 @@ knows both its identity and the contents of the Target Resource request.<a href=
 from the Oblivious Gateway Resource containing the response from the Target
 Resource. This is useful for applications that require a response from the
 Target Resource. However, there are many settings in which Clients do not require
-a response from the Target Resource, including, but not limited to: privacy-preserving data
+a response from the Target Resource, including privacy-preserving data
 collection <span>[<a href="#STAR" class="xref">STAR</a>]</span>, publish-subscribe applications, and more generally
-applications which unreliably "fire and forget" data to targets. Beyond these application
-use cases, unreliable requests also enable the relay to play a more active role towards
-improving client privacy, e.g., by batching, buffering, and shuffling requests to
+applications which submit data under a "best effort" policy. Beyond these application
+use cases, unreliable requests also allow the relay to play a more active role towards
+improving client privacy, e.g. by batching, buffering, and shuffling requests to
 mitigate traffic analysis by network eavesdroppers or amplify local differential privacy
 protections used by clients <span>[<a href="#LOCALDP" class="xref">LOCALDP</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This document describes an extension to OHTTP that supports unreliable requests.
@@ -1317,10 +1316,10 @@ appear in all capitals, as shown here.<a href="#section-3-1" class="pilcrow">¶<
 <p id="section-4-1">Unreliable OHTTP extends the basic OHTTP protocol in the following ways:<a href="#section-4-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-4-2">
 <li id="section-4-2.1">It introduces a new Media Type for unreliable OHTTP responses that represent a
-"request acknowledgement message." A 202 Accepted response with this Content-Type
+"request acknowledgement message." A <code>202 Accepted</code> response with this Content-Type
 signals that the corresponding Encapsulated Request was accepted and will be processed later.<a href="#section-4-2.1" class="pilcrow">¶</a>
 </li>
-        <li id="section-4-2.2">It extends Client and Oblivious Relay Resource behavior to expect with 202 Accepted
+        <li id="section-4-2.2">It extends Client and Oblivious Relay Resource behavior to expect <code>202 Accepted</code>
 responses when Clients opt in to receive unreliable OHTTP responses.<a href="#section-4-2.2" class="pilcrow">¶</a>
 </li>
       </ol>
@@ -1413,15 +1412,18 @@ This end-to-end interaction is shown below.<a href="#section-4-3" class="pilcrow
 Encapsulated Request as described in <span>[<a href="#OHTTP" class="xref">OHTTP</a>]</span>. This Encapsulated Request
 is included as the content of a POST request to the Oblivious Relay Resource.
 Importantly, this request <span class="bcp14">MUST</span> include the "message/ohttp-ack" Media Type
-in the Accept header (see <a href="#iana-ack" class="xref">Section 6.1</a>). The Client receives a 202 Accepted
-response with content type "message/ohttp-ack" and empty body upon successful
-transmission of the request. Any other response is considered invalid.<a href="#section-4-5" class="pilcrow">¶</a></p>
+in the Accept header (see <a href="#iana-ack" class="xref">Section 6.1</a>). The Client receives a <code>202 Accepted</code>
+response with content type "message/ohttp-ack" and an empty body upon successful
+transmission of the request. If the Accept header also allows the normal
+"message/bhttp" content type, the client has left the choice of reliable or
+unreliable delivery up to the Relay and Gateway Resources.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <p id="section-4-6">Upon receipt of an unreliable OHTTP request from the Client, the Oblivious
-Relay Resource <span class="bcp14">MUST</span> reply with a 202 Accepted response with the "message/ohttp-ack"
-content type to the Client and buffer the request to be sent to the Oblivious
-Gateway Resource at some point in the future. Similarly, upon receipt of an
+Relay Resource <span class="bcp14">MUST</span> reply with a <code>202 Accepted</code> response with the "message/ohttp-ack"
+content type to the Client. It can buffer the request to be sent to the Oblivious
+Gateway Resource at some point in the future, or choose to forward it immediately.
+Similarly, upon receipt of an
 unreliable OHTTP request from the Oblivious Relay Resource, the Oblivious Gateway
-Resource <span class="bcp14">MUST</span> reply with a 202 Accepted response with the "message/ohttp-ack"
+Resource <span class="bcp14">MUST</span> reply with a <code>202 Accepted</code> response and the "message/ohttp-ack"
 content type to the Oblivious Relay Resource and buffer the request for
 decapsulation and processing at some point in the future.<a href="#section-4-6" class="pilcrow">¶</a></p>
 <div id="client-considerations">
@@ -1434,6 +1436,11 @@ In particular, Clients do not receive authenticated confirmation that their requ
 processed by the Oblivious Gateway Resource. Moreover, Clients cannot implement any sort
 of retry mechanism in the event that their requests are too old. This means that applications
 using unreliable OHTTP should tolerate some amount of data loss.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">If a Client does not specify unreliable delivery by setting a compatible
+Accept header in its request, and receives a <code>406 Not Acceptable</code> status
+code in the response from the Relay Resource, this means that the OHTTP
+configuration for that request only supports unreliable OHTTP. The client
+<span class="bcp14">MAY</span> then retry, this time allowing unreliable delivery.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="relay-considerations">
@@ -1445,12 +1452,20 @@ using unreliable OHTTP should tolerate some amount of data loss.<a href="#sectio
 for future transmission to an Oblivious Gateway Resource. The relay can choose to
 buffer Client requests until a sufficiently large number of requests is reached
 and then send all requests in a single batch to the gateway. Additionally, the relay
-can shuffle requests before forwarding them to the gateway.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+can shuffle requests before forwarding them to the gateway to further obscure
+the request timing.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <p id="section-4.2-2">The choice of minimum buffer size is an implementation detail. Relays should take care
 to not introduce too much delay between when a request was received and when it is
 forwarded. Such delay may cause the gateway to drop the request due to a variety
 of reasons, e.g., because the gateway configuration changed or rotated or the decapsulated
 request became too old.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2-3">A Relay which supports unreliable OHTTP may be configured to enforce
+unreliable delivery. In such cases, if the Relay receives a normal
+OHTTP request, i.e., without an Accept header matching "message/ohttp-ack",
+it <span class="bcp14">SHOULD</span> respond with <code>406 Not Acceptable</code> to signal this requirement
+to the client. If a Relay has forwarded an Encapsulated Request and
+receives a <code>406 Not Acceptable</code> response, it <span class="bcp14">MUST</span> return the same status
+code in its response to the Client.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="gateway-considerations">
@@ -1464,6 +1479,12 @@ process each request is isolated to a different process. Similar to the relay,
 the choice of how to buffer incoming requests is an implementation decision, and
 any delay in processing a request can increase the likelihood that the request
 is dropped or discarded due to it being stale.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.3-2">If an Oblivious Gateway Resource requires unreliable delivery for a
+request, by implementation constraint or policy, it <span class="bcp14">SHOULD</span> respond
+with <code>406 Not Acceptable</code> to any requests which require reliable return of an
+Encapsulated Response. The Relay Resource will forward this to the
+Client, and the Client can then fail or retry with unreliable delivery according to
+its own requirements.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
