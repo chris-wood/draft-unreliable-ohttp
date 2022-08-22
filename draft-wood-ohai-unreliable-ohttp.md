@@ -191,8 +191,8 @@ unreliable delivery up to the Relay and Gateway Resources.
 
 Upon receipt of an unreliable OHTTP request from the Client, the Oblivious
 Relay Resource MUST reply with a `202 Accepted` response with the "message/ohttp-ack"
-content type to the Client. It SHOULD buffer the request to be sent to the Oblivious
-Gateway Resource at some point in the future, but MAY chose to forward it immediately.
+content type to the Client. It can buffer the request to be sent to the Oblivious
+Gateway Resource at some point in the future, or choose to forward it immediately.
 Similarly, upon receipt of an
 unreliable OHTTP request from the Oblivious Relay Resource, the Oblivious Gateway
 Resource MUST reply with a `202 Accepted` response and the "message/ohttp-ack"
