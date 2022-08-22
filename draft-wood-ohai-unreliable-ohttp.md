@@ -252,13 +252,6 @@ Encapsulated Response. The Relay Resource will forward this to the
 Client, and the Client can then fail or retry with unreliable delivery according to
 its own requirements.
 
-Note that while it's possible for the Gateway to decide whether to
-require an unreliable OHTTP request based on information in the
-Encapsulated Request, doing so leaks information about the contents
-to the Relay. Implementations must take this into account in
-deployment so they do not violate the privacy properties of the
-OHTTP channel.
-
 
 # Security Considerations {#security}
 
