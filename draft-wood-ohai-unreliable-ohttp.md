@@ -230,7 +230,7 @@ request became too old.
 
 A Relay which supports unreliable OHTTP may be configured to enforce
 unreliable delivery. In such cases, if the Relay receives a normal
-OHTTP request, i.e. without an Accept header matching "message/ohttp-ack",
+OHTTP request, i.e., without an Accept header matching "message/ohttp-ack",
 it SHOULD respond with `406 Not Acceptable` to signal this requirement
 to the client. If a Relay has forwarded an Encapsulated Request and
 receives a `406 Not Acceptable` response, it MUST return the same status
