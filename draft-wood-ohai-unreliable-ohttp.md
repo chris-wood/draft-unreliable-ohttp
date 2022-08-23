@@ -211,7 +211,7 @@ This extension is triggered when the Client specifies `message/ohttp-ack`
 in the `Accept` header in a request sent to the Oblivious Relay Resource.
 Likewise, this extension can be disabled by specifying `message/ohttp-res`
 (or sending no Accept header at all), requiring the return of an
-Encapsulated Response according to normal OHTTP.
+Encapsulated Response according to {{OHTTP}}.
 
 A Client MAY signal that unreliable delivery is optional by setting a
 request header of `Accept: message/*` or `Accept: */*` which matches
