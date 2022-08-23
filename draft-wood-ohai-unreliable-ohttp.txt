@@ -5,8 +5,8 @@
 Oblivious HTTP Application Intermediation                       R. Giles
 Internet-Draft                                                     Brave
 Intended status: Informational                                C. A. Wood
-Expires: 23 February 2023                                     Cloudflare
-                                                          22 August 2022
+Expires: 24 February 2023                                     Cloudflare
+                                                          23 August 2022
 
 
                  An Unreliable Oblivious HTTP Extension
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 February 2023.
+   This Internet-Draft will expire on 24 February 2023.
 
 Copyright Notice
 
@@ -272,6 +272,16 @@ Table of Contents
    This means that applications using unreliable OHTTP should tolerate
    some amount of data loss.
 
+   This extension is triggered when the Client specifies message/ohttp-
+   ack in the Accept header in a request sent to the Oblivious Relay
+   Resource.  Likewise, this extension can be disabled by specifying
+   message/ohttp-res (or sending no Accept header at all), requiring the
+   return of an Encapsulated Response according to [OHTTP].
+
+   A Client MAY signal that unreliable delivery is optional by setting a
+   request header of Accept: message/* or Accept: */* which matches both
+   the message/ohttp-res and message/ohttp-ack Media Types.
+
    If a Client does not specify unreliable delivery by setting a
    compatible Accept header in its request, and receives a 406 Not
    Acceptable status code in the response from the Relay Resource, this
@@ -303,6 +313,15 @@ Table of Contents
    requirement to the client.  If a Relay has forwarded an Encapsulated
    Request and receives a 406 Not Acceptable response, it MUST return
    the same status code in its response to the Client.
+
+   If a Relay receives a request from the Client which allows either
+   reliable or unreliable OHTTP, because the Accept header is message/*
+   or */*, it can choose to interpret it as one or the other, or it can
+   delegate the decision to the Gateway Resource.  If it chooses to
+   interpret the request as an unreliable OHTTP request, and has already
+   returned a 202 Accepted reponse to the Client, it SHOULD set the
+   corresponding Accept: message/ohttp-ack header when it forwards to
+   request to the Gateway Resource.
 
 4.3.  Gateway Considerations
 
