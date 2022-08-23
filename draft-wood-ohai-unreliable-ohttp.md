@@ -207,6 +207,16 @@ processed by the Oblivious Gateway Resource. Moreover, Clients cannot implement 
 of retry mechanism in the event that their requests are too old. This means that applications
 using unreliable OHTTP should tolerate some amount of data loss.
 
+This extension is triggered when the Client specifies `message/ohttp-ack`
+in the `Accept` header in a request sent to the Oblivious Relay Resource.
+Likewise, this extension can be disabled by specifying `message/ohttp-res`
+(or sending no Accept header at all), requiring the return of an
+Encapsulated Response according to normal OHTTP.
+
+A Client MAY signal that unreliable delivery is optional by setting a
+request header of `Accept: message/*` or `Accept: */*` which matches
+both the `message/ohttp-res` and `message/ohttp-ack` Media Types.
+
 If a Client does not specify unreliable delivery by setting a compatible
 Accept header in its request, and receives a `406 Not Acceptable` status
 code in the response from the Relay Resource, this means that the OHTTP
@@ -235,6 +245,14 @@ it SHOULD respond with `406 Not Acceptable` to signal this requirement
 to the client. If a Relay has forwarded an Encapsulated Request and
 receives a `406 Not Acceptable` response, it MUST return the same status
 code in its response to the Client.
+
+If a Relay receives a request from the Client which allows either reliable
+or unreliable OHTTP, because the `Accept` header is `message/*` or `*/*`,
+it can choose to interpret it as one or the other, or it can delegate the
+decision to the Gateway Resource. If it chooses to interpret the request
+as an unreliable OHTTP request, and has already returned a `202 Accepted`
+reponse to the Client, it SHOULD set the corresponding `Accept: message/ohttp-ack`
+header when it forwards to request to the Gateway Resource.
 
 ## Gateway Considerations
 
