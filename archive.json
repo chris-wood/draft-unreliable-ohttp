@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-08-23T00:01:43.687931+00:00",
+  "timestamp": "2022-08-25T00:01:33.550542+00:00",
   "repo": "chris-wood/draft-unreliable-ohttp",
   "labels": [
     {
@@ -62,7 +62,7 @@
       "labels": [],
       "body": "The role of the Gateway Resource in reliable OHTTP is to decrypt the Encapsulated Request and forward it to the Target Resource. We should probably say something about the privacy risk of using the decrypted contents of the Encapsulated request in any conditional behaviour, since this leaks information which should be private between the Gateway and Client to the Relay, and possibly to external traffic observers.\r\n\r\nAn example of such conditional behaviour would be looking at the `Host` or other header fields in the Encapsulated Request when deciding whether to enforce unreliable OHTTP by returning `406 Not Acceptable`, or deciding whether to return an Encapsulated Response when the `Accept` header received from the Relay allows this choice.\r\n\r\nProbably goes in the Security Considerations and/or Gateway Considerations sections.\r\n\r\n> Note that while it's possible for the Gateway to decide whether to\r\n> require an unreliable OHTTP request based on information in the\r\n> Encapsulated Request, doing so leaks information about the contents\r\n> to the Relay. Implementations must take this into account in\r\n> deployment so they do not violate the privacy properties of the\r\n> OHTTP channel.\r\n",
       "createdAt": "2022-08-22T17:10:02Z",
-      "updatedAt": "2022-08-22T20:27:39Z",
+      "updatedAt": "2022-08-23T10:13:57Z",
       "closedAt": null,
       "comments": [
         {
@@ -71,6 +71,20 @@
           "body": "I don't think we should allow or recommend this type of behavior, although we can't enforce what happens if someone violates the rule. I think we should just document what can happen if this conditional behavior is implemented. Perhaps we could extend the [differential treatment](https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html#name-differential-treatment) section in the main OHTTP spec to include this discussion?",
           "createdAt": "2022-08-22T20:27:39Z",
           "updatedAt": "2022-08-22T20:27:39Z"
+        },
+        {
+          "author": "rillian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Sounds reasonable, although I think the OHTTP draft is at the end of last call. It does already have a number of warnings about leaking encapsulated information, as you mention. I think we should build on that in this draft by just mentioning the issue as a continuation of those warnings.\r\n\r\nPicking a delivery policy based on `Host` or another header is something I can imagine a new implementation doing, so I wanted to say something against it here where the enabling logic originates.",
+          "createdAt": "2022-08-23T01:03:55Z",
+          "updatedAt": "2022-08-23T01:03:55Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "OWNER",
+          "body": "> Sounds reasonable, although I think the OHTTP draft is at the end of last call. It does already have a number of warnings about leaking encapsulated information, as you mention. I think we should build on that in this draft by just mentioning the issue as a continuation of those warnings.\r\n\r\nRight, I meant to extend the discussion _here in this draft_, not to update the main spec.\r\n\r\n> Picking a delivery policy based on Host or another header is something I can imagine a new implementation doing, so I wanted to say something against it here where the enabling logic originates.\r\n\r\nYep, that makes sense \ud83d\udc4d ",
+          "createdAt": "2022-08-23T10:13:56Z",
+          "updatedAt": "2022-08-23T10:13:56Z"
         }
       ]
     }
@@ -285,6 +299,55 @@
               "body": "https://github.com/chris-wood/draft-unreliable-ohttp/issues/3",
               "createdAt": "2022-08-22T17:32:42Z",
               "updatedAt": "2022-08-22T17:32:42Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOH1ALCM49milA",
+      "title": "Document Accept: message/* for optional enable.",
+      "url": "https://github.com/chris-wood/draft-unreliable-ohttp/pull/4",
+      "state": "MERGED",
+      "author": "rillian",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Clarify that clients ultimately control whether the extension is\r\nactivated, and that the can leave the choice up to the Relay and\r\nGateway Resource.",
+      "createdAt": "2022-08-23T01:00:27Z",
+      "updatedAt": "2022-08-23T13:46:49Z",
+      "baseRepository": "chris-wood/draft-unreliable-ohttp",
+      "baseRefName": "main",
+      "baseRefOid": "ea91424703f50bde4230b852b86fba431e2ca3fa",
+      "headRepository": "rillian/draft-unreliable-ohttp",
+      "headRefName": "accept",
+      "headRefOid": "cea47f8e73da5af000f011e2ca27451d1a22fe82",
+      "closedAt": "2022-08-23T13:01:44Z",
+      "mergedAt": "2022-08-23T13:01:44Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "bb96558d703947c7b7b880ba98270853b4cc0fab"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOH1ALCM5Ae9zn",
+          "commit": {
+            "abbreviatedOid": "a8e733d"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-08-23T10:14:24Z",
+          "updatedAt": "2022-08-23T10:15:13Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\r\nEncapsulated Response according to {{OHTTP}}.\r\n```",
+              "createdAt": "2022-08-23T10:14:24Z",
+              "updatedAt": "2022-08-23T10:15:13Z"
             }
           ]
         }
