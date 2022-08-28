@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-08-25T00:01:33.550542+00:00",
+  "timestamp": "2022-08-28T00:01:49.808195+00:00",
   "repo": "chris-wood/draft-unreliable-ohttp",
   "labels": [
     {
@@ -85,6 +85,30 @@
           "body": "> Sounds reasonable, although I think the OHTTP draft is at the end of last call. It does already have a number of warnings about leaking encapsulated information, as you mention. I think we should build on that in this draft by just mentioning the issue as a continuation of those warnings.\r\n\r\nRight, I meant to extend the discussion _here in this draft_, not to update the main spec.\r\n\r\n> Picking a delivery policy based on Host or another header is something I can imagine a new implementation doing, so I wanted to say something against it here where the enabling logic originates.\r\n\r\nYep, that makes sense \ud83d\udc4d ",
           "createdAt": "2022-08-23T10:13:56Z",
           "updatedAt": "2022-08-23T10:13:56Z"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOH1ALCM5QfELX",
+      "title": "Consider Prefer: respond-async",
+      "url": "https://github.com/chris-wood/draft-unreliable-ohttp/issues/5",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The current design uses a new media type (which appears to be zero-length always, I couldn't see where the content was defined).\r\n\r\nAn alternative is this: [`Prefer: respond-async`](https://httpwg.org/specs/rfc7240.html#respond-async), which allows a client to indicate that it might prefer a 202 status response rather than a full answer to its request.",
+      "createdAt": "2022-08-25T04:53:06Z",
+      "updatedAt": "2022-08-26T21:39:29Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "rillian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Interesting. I guess this would look like the client sending:\r\n```http\r\nPOST / HTTP/1.1\r\nHost: ohttp.example.com\r\nContent-Type: message/ohttp-req\r\nPrefer: respond-async\r\nContent-Length: 559\r\n\r\n<encapsulated bhttp request>\r\n```\r\n\r\nThe Relay or Gateway would choose to respond either by queuing the request for later processing and returning:\r\n```http\r\nHTTP/1.1 202 Accepted\r\nContent-Length: 0\r\n\r\n<empty body>\r\n```\r\nor by forwarding and returning as in reliable ohttp:\r\n```http\r\nHTTP/1.1 200 OK\r\nContent-Type: message/bhttp-res\r\nContent-Length: 153\r\n\r\n<encapsulated bhttp response>\r\n```\r\n\r\nQuite similar except for the empty `Content-Type` header on the zero-length unreliable response body. This leaves the decision up to the servers rather than the client like the `Accept: message/ohttp-ack` method.\r\n\r\n## Pros\r\n\r\n- Reuses an [existing mechanism](https://www.rfc-editor.org/rfc/rfc7240#section-4.1)\r\n- Servers ultimately choose delivery method\r\n- `wait` parameter allows clients to give a delivery-delay hint\r\n\r\n## Cons\r\n\r\n- More complicated semantics\r\n- The `Accept` mechanism is [documented](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.1) in the base HTTP Semantics spec while `Prefer` header is described by a [separate rfc](https://httpwg.org/specs/rfc7240.html) and may not be as well-known.",
+          "createdAt": "2022-08-26T21:39:29Z",
+          "updatedAt": "2022-08-26T21:39:29Z"
         }
       ]
     }
