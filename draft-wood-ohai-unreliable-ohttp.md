@@ -55,10 +55,12 @@ end-to-end client privacy protections.
 A typical HTTP transaction consists of a request and response between
 a Client and Target Resource. Oblivious HTTP ({{!OHTTP=I-D.ietf-ohai-ohttp}})
 adds an Oblivious Relay Resource and Oblivious Gateway Resource between
-Client and Target Resource. An OHTTP transaction through the Oblivious Relay
-Resource to the Oblivious Gateway Resource decouples the identity of the Client,
-i.e. its IP address, from the request to the Target Resource. Only the Client
-knows both its identity and the contents of the Target Resource request.
+Client and Target Resource to help process HTTP transactions. In particular,
+requests flow from the Client to the Target through the Oblivious Relay
+Resource and Oblivious Gateway Resource in sequence. In effect, an OHTTP
+transaction decouples the identity of the Client, i.e. its IP address,
+from the request to the Target Resource. Only the Client knows both its
+identity and the contents of the Target Resource request.
 
 In a typical OHTTP transaction, Clients receive an Encapsulated Response
 from the Oblivious Gateway Resource containing the response from the Target
@@ -83,7 +85,7 @@ as discussed in {{introduction}}. However, the primary motivations for this feat
 are agnostic to most applications. In particular, unreliable data transmission allows
 the Oblivious Gateway Resource to be deployed in a more performant and secure manner,
 and it also allows the Oblivious Relay Resource to be deployed to improve Client request
-privacy. We describe these motivating factors below.
+privacy. We describe these motivating properties below.
 
 ## Gateway Performance and Security
 
@@ -130,7 +132,7 @@ Unreliable OHTTP extends the basic OHTTP protocol in the following ways:
 1. It introduces a new Media Type for unreliable OHTTP responses that represent a
    "request acknowledgement message." A `202 Accepted` response with this Content-Type
    signals that the corresponding Encapsulated Request was accepted and will be processed later.
-1. It extends Client and Oblivious Relay Resource behavior to expect `202 Accepted`
+1. It extends Client and Oblivious Relay Resource behavior to accept `202 Accepted`
    responses when Clients opt in to receive unreliable OHTTP responses.
 
 At a high level, an unreliable OHTTP request can be accepted by either the Oblivious Relay
@@ -270,7 +272,6 @@ Encapsulated Response. The Relay Resource will forward this to the
 Client, and the Client can then fail or retry with unreliable delivery according to
 its own requirements.
 
-
 # Security Considerations {#security}
 
 Unreliable OHTTP does not change the security profile of OHTTP since an Oblivious Relay
@@ -278,7 +279,6 @@ Resource and Oblivious Gateway Resource could always reply with non-2xx and no b
 clients. Nevertheless, unreliable OHTTP is only appropriate for applications that do not
 require explicit confirmation of response or otherwise require privacy amplification by the
 Oblivious Relay Resource.
-
 
 
 # IANA Considerations
@@ -367,4 +367,4 @@ Change controller:
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+This draft was motivated by discussions with Martin Thomson, Tommy Pauly, and Lucas Pardue.
