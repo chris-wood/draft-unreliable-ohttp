@@ -5,8 +5,8 @@
 Oblivious HTTP Application Intermediation                       R. Giles
 Internet-Draft                                                     Brave
 Intended status: Informational                                C. A. Wood
-Expires: 24 February 2023                                     Cloudflare
-                                                          23 August 2022
+Expires: 3 March 2023                                         Cloudflare
+                                                          30 August 2022
 
 
                  An Unreliable Oblivious HTTP Extension
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 February 2023.
+   This Internet-Draft will expire on 3 March 2023.
 
 Copyright Notice
 
@@ -96,11 +96,13 @@ Table of Contents
    A typical HTTP transaction consists of a request and response between
    a Client and Target Resource.  Oblivious HTTP ([OHTTP]) adds an
    Oblivious Relay Resource and Oblivious Gateway Resource between
-   Client and Target Resource.  An OHTTP transaction through the
-   Oblivious Relay Resource to the Oblivious Gateway Resource decouples
-   the identity of the Client, i.e. its IP address, from the request to
-   the Target Resource.  Only the Client knows both its identity and the
-   contents of the Target Resource request.
+   Client and Target Resource to help process HTTP transactions.  In
+   particular, requests flow from the Client to the Target through the
+   Oblivious Relay Resource and Oblivious Gateway Resource in sequence.
+   In effect, an OHTTP transaction decouples the identity of the Client,
+   i.e. its IP address, from the request to the Target Resource.  Only
+   the Client knows both its identity and the contents of the Target
+   Resource request.
 
    In a typical OHTTP transaction, Clients receive an Encapsulated
    Response from the Oblivious Gateway Resource containing the response
@@ -129,7 +131,8 @@ Table of Contents
    particular, unreliable data transmission allows the Oblivious Gateway
    Resource to be deployed in a more performant and secure manner, and
    it also allows the Oblivious Relay Resource to be deployed to improve
-   Client request privacy.  We describe these motivating factors below.
+   Client request privacy.  We describe these motivating properties
+   below.
 
 2.1.  Gateway Performance and Security
 
@@ -190,7 +193,7 @@ Table of Contents
        corresponding Encapsulated Request was accepted and will be
        processed later.
 
-   2.  It extends Client and Oblivious Relay Resource behavior to expect
+   2.  It extends Client and Oblivious Relay Resource behavior to accept
        202 Accepted responses when Clients opt in to receive unreliable
        OHTTP responses.
 
@@ -417,7 +420,8 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   This draft was motivated by discussions with Martin Thomson, Tommy
+   Pauly, and Lucas Pardue.
 
 Authors' Addresses
 
