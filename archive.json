@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-08-28T00:01:49.808195+00:00",
+  "timestamp": "2022-09-01T00:01:39.723910+00:00",
   "repo": "chris-wood/draft-unreliable-ohttp",
   "labels": [
     {
@@ -111,6 +111,22 @@
           "updatedAt": "2022-08-26T21:39:29Z"
         }
       ]
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOH1ALCM5Q13tR",
+      "title": "who requires acknowledgement",
+      "url": "https://github.com/chris-wood/draft-unreliable-ohttp/issues/7",
+      "state": "OPEN",
+      "author": "rillian",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "> STAR can use OHTTP to send client reports, but it requires the Oblivious Gateway Resource to produce an encrypted acknowledgement to the clients for every report.\r\n\r\nThe antecedent of \"it\" is ambiguous here. We should clarify that it's OHTTP requiring the encryped ack, not STAR. Maybe just \"but that requires\"?",
+      "createdAt": "2022-08-30T20:55:53Z",
+      "updatedAt": "2022-08-30T20:55:53Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -374,6 +390,48 @@
               "updatedAt": "2022-08-23T10:15:13Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOH1ALCM4-C8Hb",
+      "title": "Some edits before -00",
+      "url": "https://github.com/chris-wood/draft-unreliable-ohttp/pull/6",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-08-30T12:58:36Z",
+      "updatedAt": "2022-08-30T17:30:43Z",
+      "baseRepository": "chris-wood/draft-unreliable-ohttp",
+      "baseRefName": "main",
+      "baseRefOid": "bb96558d703947c7b7b880ba98270853b4cc0fab",
+      "headRepository": "chris-wood/draft-unreliable-ohttp",
+      "headRefName": "caw/some-edits",
+      "headRefOid": "6de8802daa8d826acc9c9ad3005ad1375b36dfcf",
+      "closedAt": "2022-08-30T17:30:43Z",
+      "mergedAt": "2022-08-30T17:30:43Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "3ff564b4a6de1604d5744f743df4640c9d786df4"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOH1ALCM5BAv9n",
+          "commit": {
+            "abbreviatedOid": "6de8802"
+          },
+          "author": "rillian",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-08-30T17:30:18Z",
+          "updatedAt": "2022-08-30T17:30:18Z",
+          "comments": []
         }
       ]
     }
