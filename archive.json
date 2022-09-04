@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-01T00:01:39.723910+00:00",
+  "timestamp": "2022-09-04T00:01:43.811540+00:00",
   "repo": "chris-wood/draft-unreliable-ohttp",
   "labels": [
     {
@@ -24,14 +24,14 @@
       "color": "a2eeef"
     },
     {
-      "name": "help wanted",
-      "description": "Extra attention is needed",
-      "color": "008672"
-    },
-    {
       "name": "good first issue",
       "description": "Good for newcomers",
       "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
     },
     {
       "name": "invalid",
@@ -100,7 +100,7 @@
       "labels": [],
       "body": "The current design uses a new media type (which appears to be zero-length always, I couldn't see where the content was defined).\r\n\r\nAn alternative is this: [`Prefer: respond-async`](https://httpwg.org/specs/rfc7240.html#respond-async), which allows a client to indicate that it might prefer a 202 status response rather than a full answer to its request.",
       "createdAt": "2022-08-25T04:53:06Z",
-      "updatedAt": "2022-08-26T21:39:29Z",
+      "updatedAt": "2022-09-02T00:06:11Z",
       "closedAt": null,
       "comments": [
         {
@@ -109,6 +109,13 @@
           "body": "Interesting. I guess this would look like the client sending:\r\n```http\r\nPOST / HTTP/1.1\r\nHost: ohttp.example.com\r\nContent-Type: message/ohttp-req\r\nPrefer: respond-async\r\nContent-Length: 559\r\n\r\n<encapsulated bhttp request>\r\n```\r\n\r\nThe Relay or Gateway would choose to respond either by queuing the request for later processing and returning:\r\n```http\r\nHTTP/1.1 202 Accepted\r\nContent-Length: 0\r\n\r\n<empty body>\r\n```\r\nor by forwarding and returning as in reliable ohttp:\r\n```http\r\nHTTP/1.1 200 OK\r\nContent-Type: message/bhttp-res\r\nContent-Length: 153\r\n\r\n<encapsulated bhttp response>\r\n```\r\n\r\nQuite similar except for the empty `Content-Type` header on the zero-length unreliable response body. This leaves the decision up to the servers rather than the client like the `Accept: message/ohttp-ack` method.\r\n\r\n## Pros\r\n\r\n- Reuses an [existing mechanism](https://www.rfc-editor.org/rfc/rfc7240#section-4.1)\r\n- Servers ultimately choose delivery method\r\n- `wait` parameter allows clients to give a delivery-delay hint\r\n\r\n## Cons\r\n\r\n- More complicated semantics\r\n- The `Accept` mechanism is [documented](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.1) in the base HTTP Semantics spec while `Prefer` header is described by a [separate rfc](https://httpwg.org/specs/rfc7240.html) and may not be as well-known.",
           "createdAt": "2022-08-26T21:39:29Z",
           "updatedAt": "2022-08-26T21:39:29Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "body": "Practically speaking, Accept only gives a suggestion that a server can ignore, so I think that the two are functionally equivalent.\r\n\r\nI don't see any value in the `wait` parameter in this case, unless the processing at the gateway is likely to take a very long time (and then you have to deal with the potential that the value is ignored anyway).",
+          "createdAt": "2022-09-02T00:06:11Z",
+          "updatedAt": "2022-09-02T00:06:11Z"
         }
       ]
     },
@@ -127,6 +134,30 @@
       "updatedAt": "2022-08-30T20:55:53Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOH1ALCM5RCUnG",
+      "title": "Controlling batch size",
+      "url": "https://github.com/chris-wood/draft-unreliable-ohttp/issues/8",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "There is a suggestion that a relay might delay requests and forward them in a batch.  Here are some ideas that leverage `Prefer` to give the client some control (or at least some input) into that process.\r\n\r\n`Prefer: respond-async, forward-batch;n=5` says that you should forward in a batch of at least 5 requests and respond asynchronously.\r\n\r\n`Prefer: respond-async;wait=10, forward-batch;n=5` says that the client prefers an asynchronous response if it has to wait more than 10s, but it also prefers forwarding in a batch of size 10.  These two combine so that the client gets a direct response if the answer comes in 10s, but only if the relay is able to forward the request in a batch of at least 5 requests.\r\n\r\n`Prefer: forward-batch;n=5;wait=10` doesn't allow for asynchronous forwarding, but it says that the client prefers forwarding in a batch.  This one says to wait up to 10 seconds if the batch isn't at least 5 requests, but then send it anyway if there are no other requests.\r\n\r\nI don't know how likely it is that someone will implement this.  I wouldn't specify something like this unless someone really wanted that, but something like this might make sense for more sensitive data submission applications.",
+      "createdAt": "2022-09-02T00:13:23Z",
+      "updatedAt": "2022-09-02T13:21:49Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "OWNER",
+          "body": "Thanks for filing this! Right now, I envision relays being specifically configured for the application that's using it. Part of that configuration might describe what headers the relay is allowed to attach to forwarded requests, where requests are forwarded (what gateway URL, basically), and so on. If a relay was to support unreliable OHTTP, I imagine this configuration would be extended to include information about preferred batch size or delay time.\r\n\r\nThat said, I could imagine clients having more influence over this information for certain applications. Take DAP for example, where one might want to use a batching and shuffling relay to upload reports to the leader for the purposes of local DP amplification. The batching and shuffling parameters likely depend on the details of a particular task. One could configure a different relay endpoint for each distinct task, but it might be operationally simpler to just use the same relay with tunable batching and shuffling parameters.",
+          "createdAt": "2022-09-02T13:21:49Z",
+          "updatedAt": "2022-09-02T13:21:49Z"
+        }
+      ]
     }
   ],
   "pulls": [
