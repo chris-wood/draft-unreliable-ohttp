@@ -89,17 +89,18 @@ privacy. We describe these motivating properties below.
 
 ## Gateway Performance and Security
 
-{{STAR}} is a proposed system for privacy-preserving data collection aimed at the
-heavy hitters problem. For privacy reasons, it is important that client reports,
-containing their individual measurements, are separated from any client identifying
-information, including their IP address. STAR can use OHTTP to send client reports,
-but it requires the Oblivious Gateway Resource to produce an encrypted acknowledgement
-to the clients for every report.
+In privacy-preserving data collection systems, it is important that client reports
+containing their individual measurements are separated from any client identifying
+information, including their IP address. A protocol like the {{STAR}} proposal, which
+otherwise enforces privacy through filtering for heavy-hitters in the report data,
+can use OHTTP to send client reports to achieve this.
 
-Depending on the Oblivious Gateway Resource implementation and scale of deployment,
-this can lead to reduced performance. It also requires the Oblivious Gateway Resource to
-have access to the private key necessary to process the Encapsulated Request carrying
-a report and produce a response.
+However, OHTTP normally requires the Oblivious Gateway Resource produce an
+encrypted acknowledgement for every client report. Depending on the implementation
+and scale of deployment, this requirement can lead to reduced performance.
+It also requires the Oblivious Gateway Resource to have access to the private
+key necessary to process the Encapsulated Request carrying a report and produce
+a response.
 
 Unreliable data transmission would allow the Oblivious Gateway Resource to return an
 unencrypted acknowledgement of receipt, buffer Encapsulated Requests for future
