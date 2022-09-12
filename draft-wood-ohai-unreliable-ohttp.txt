@@ -5,8 +5,8 @@
 Oblivious HTTP Application Intermediation                       R. Giles
 Internet-Draft                                                     Brave
 Intended status: Informational                                C. A. Wood
-Expires: 3 March 2023                                         Cloudflare
-                                                          30 August 2022
+Expires: 16 March 2023                                        Cloudflare
+                                                       12 September 2022
 
 
                  An Unreliable Oblivious HTTP Extension
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 March 2023.
+   This Internet-Draft will expire on 16 March 2023.
 
 Copyright Notice
 
@@ -391,9 +391,9 @@ Table of Contents
 7.1.  Normative References
 
    [OHTTP]    Thomson, M. and C. A. Wood, "Oblivious HTTP", Work in
-              Progress, Internet-Draft, draft-ietf-ohai-ohttp-03, 8
-              August 2022, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-ohai-ohttp-03>.
+              Progress, Internet-Draft, draft-ietf-ohai-ohttp-04, 1
+              September 2022, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-ohai-ohttp-04>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
