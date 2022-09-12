@@ -100,7 +100,7 @@ encrypted acknowledgement for every client report. Depending on the implementati
 and scale of deployment, this requirement can lead to reduced performance.
 It also requires the Oblivious Gateway Resource to have access to the private
 key necessary to process the Encapsulated Request carrying a report and produce
-a response.
+an Encapsulated Response.
 
 Unreliable data transmission would allow the Oblivious Gateway Resource to return an
 unencrypted acknowledgement of receipt, buffer Encapsulated Requests for future
