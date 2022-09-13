@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-08T00:02:43.847781+00:00",
+  "timestamp": "2022-09-13T00:02:09.499534+00:00",
   "repo": "chris-wood/draft-unreliable-ohttp",
   "labels": [
     {
@@ -471,24 +471,26 @@
       "id": "PR_kwDOH1ALCM4-f2m4",
       "title": "Ci fixes",
       "url": "https://github.com/chris-wood/draft-unreliable-ohttp/pull/9",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "martinthomson",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "As a recent draft, you picked up some errors from the template.  Nothing serious, but there were some performance problems in CI that this change will fix.",
       "createdAt": "2022-09-07T09:59:19Z",
-      "updatedAt": "2022-09-07T15:57:02Z",
+      "updatedAt": "2022-09-12T12:37:56Z",
       "baseRepository": "chris-wood/draft-unreliable-ohttp",
       "baseRefName": "main",
       "baseRefOid": "3ff564b4a6de1604d5744f743df4640c9d786df4",
       "headRepository": "martinthomson/unreliable-ohttp",
       "headRefName": "ci-fixes",
       "headRefOid": "24d9ffe7f3b825f890d80cf5997bc5829e8d8da3",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2022-09-12T12:37:55Z",
+      "mergedAt": "2022-09-12T12:37:55Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "be3b15208b91e30ed8519e822dd2337be605706d"
+      },
       "comments": [],
       "reviews": [
         {
@@ -502,6 +504,19 @@
           "body": "Looks reasonable to me. Thanks!",
           "createdAt": "2022-09-07T15:56:49Z",
           "updatedAt": "2022-09-07T15:57:02Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOH1ALCM5Bziuo",
+          "commit": {
+            "abbreviatedOid": "24d9ffe"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-09-12T12:36:45Z",
+          "updatedAt": "2022-09-12T12:36:45Z",
           "comments": []
         }
       ]
@@ -518,19 +533,46 @@
       "labels": [],
       "body": "Clarify how STAR would use OHTTP and how unreliable delivery helps.\r\n\r\nResolves https://github.com/chris-wood/draft-unreliable-ohttp/issues/7",
       "createdAt": "2022-09-07T16:46:16Z",
-      "updatedAt": "2022-09-07T16:46:16Z",
+      "updatedAt": "2022-09-12T15:33:00Z",
       "baseRepository": "chris-wood/draft-unreliable-ohttp",
       "baseRefName": "main",
       "baseRefOid": "3ff564b4a6de1604d5744f743df4640c9d786df4",
       "headRepository": "rillian/draft-unreliable-ohttp",
       "headRefName": "star-clarity",
-      "headRefOid": "8ea95317e9e6a9da0908644004b94a960e9b0a6e",
+      "headRefOid": "53009c46109a50850a2d9307e0630882a4598283",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOH1ALCM5BzkG3",
+          "commit": {
+            "abbreviatedOid": "8ea9531"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2022-09-12T12:39:01Z",
+          "updatedAt": "2022-09-12T12:39:57Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "This isn't true of all systems, especially Prio. For Prio, it doesn't really matter (under certain threat models) that the client's IP address is linked to their report, since the report leaks nothing about the individual data. I think we should either rephrase this, or revert to the previous text.",
+              "createdAt": "2022-09-12T12:39:01Z",
+              "updatedAt": "2022-09-12T12:39:57Z"
+            },
+            {
+              "originalPosition": 26,
+              "body": "```suggestion\r\nan Encapsulated Response.\r\n```",
+              "createdAt": "2022-09-12T12:39:51Z",
+              "updatedAt": "2022-09-12T12:39:57Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
