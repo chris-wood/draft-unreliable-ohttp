@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-13T00:02:09.499534+00:00",
+  "timestamp": "2022-09-15T00:01:46.618456+00:00",
   "repo": "chris-wood/draft-unreliable-ohttp",
   "labels": [
     {
@@ -533,7 +533,7 @@
       "labels": [],
       "body": "Clarify how STAR would use OHTTP and how unreliable delivery helps.\r\n\r\nResolves https://github.com/chris-wood/draft-unreliable-ohttp/issues/7",
       "createdAt": "2022-09-07T16:46:16Z",
-      "updatedAt": "2022-09-12T15:33:00Z",
+      "updatedAt": "2022-09-13T21:38:07Z",
       "baseRepository": "chris-wood/draft-unreliable-ohttp",
       "baseRefName": "main",
       "baseRefOid": "3ff564b4a6de1604d5744f743df4640c9d786df4",
@@ -569,6 +569,46 @@
               "body": "```suggestion\r\nan Encapsulated Response.\r\n```",
               "createdAt": "2022-09-12T12:39:51Z",
               "updatedAt": "2022-09-12T12:39:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH1ALCM5B82z2",
+          "commit": {
+            "abbreviatedOid": "8ea9531"
+          },
+          "author": "rillian",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-13T21:28:44Z",
+          "updatedAt": "2022-09-13T21:28:44Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "Do you mean that the PRIO shuffler or aggregator breaks the link between the client IP address and their report?\r\n\r\nMore generally I was trying to get away from 'This is only motivated by this one proposal from another working group.' It's a good example but I didn't want to lead with Star. What about:\r\n> In privacy-preserving data collection systems, it can be important that...",
+              "createdAt": "2022-09-13T21:28:44Z",
+              "updatedAt": "2022-09-13T21:28:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH1ALCM5B849h",
+          "commit": {
+            "abbreviatedOid": "8ea9531"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-13T21:38:06Z",
+          "updatedAt": "2022-09-13T21:38:07Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "> Do you mean that the PRIO shuffler or aggregator breaks the link between the client IP address and their report?\r\n\r\nNope! In Prio, each report is basically encrypted and never revealed in plaintext to an aggregator, so they leaking the IP address is not a problem.\r\n\r\nYour proposed alternate sounds good. I might say \"In _some_ privacy-preserving data collection systems, it can be important that...\"",
+              "createdAt": "2022-09-13T21:38:06Z",
+              "updatedAt": "2022-09-13T21:38:07Z"
             }
           ]
         }
