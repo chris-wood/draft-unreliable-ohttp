@@ -91,9 +91,9 @@ privacy. We describe these motivating properties below.
 
 In some privacy-preserving data collection systems such as {{STAR}}, it is important that client reports
 containing their individual measurements are separated from any client identifying
-information, including their IP address. A protocol like the {{STAR}} proposal, which
-otherwise enforces privacy through filtering for heavy-hitters in the report data,
-can use OHTTP to send client reports to achieve this.
+information, including their IP address. Systems like {{STAR}}, which
+otherwise enforce privacy through filtering for heavy-hitters in the report data,
+can use OHTTP to send client reports to achieve this separation.
 
 However, OHTTP normally requires the Oblivious Gateway Resource produce an
 encrypted acknowledgement for every client report. Depending on the implementation
