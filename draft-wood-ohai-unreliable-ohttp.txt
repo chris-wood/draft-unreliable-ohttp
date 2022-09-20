@@ -5,8 +5,8 @@
 Oblivious HTTP Application Intermediation                       R. Giles
 Internet-Draft                                                     Brave
 Intended status: Informational                                C. A. Wood
-Expires: 16 March 2023                                        Cloudflare
-                                                       12 September 2022
+Expires: 24 March 2023                                        Cloudflare
+                                                       20 September 2022
 
 
                  An Unreliable Oblivious HTTP Extension
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 March 2023.
+   This Internet-Draft will expire on 24 March 2023.
 
 Copyright Notice
 
@@ -136,19 +136,21 @@ Table of Contents
 
 2.1.  Gateway Performance and Security
 
-   [STAR] is a proposed system for privacy-preserving data collection
-   aimed at the heavy hitters problem.  For privacy reasons, it is
-   important that client reports, containing their individual
-   measurements, are separated from any client identifying information,
-   including their IP address.  STAR can use OHTTP to send client
-   reports, but it requires the Oblivious Gateway Resource to produce an
-   encrypted acknowledgement to the clients for every report.
+   In some privacy-preserving data collection systems such as [STAR], it
+   is important that client reports containing their individual
+   measurements are separated from any client identifying information,
+   including their IP address.  Systems like [STAR], which otherwise
+   enforce privacy through filtering for heavy-hitters in the report
+   data, can use OHTTP to send client reports to achieve this
+   separation.
 
-   Depending on the Oblivious Gateway Resource implementation and scale
-   of deployment, this can lead to reduced performance.  It also
-   requires the Oblivious Gateway Resource to have access to the private
-   key necessary to process the Encapsulated Request carrying a report
-   and produce a response.
+   However, OHTTP normally requires the Oblivious Gateway Resource
+   produce an encrypted acknowledgement for every client report.
+   Depending on the implementation and scale of deployment, this
+   requirement can lead to reduced performance.  It also requires the
+   Oblivious Gateway Resource to have access to the private key
+   necessary to process the Encapsulated Request carrying a report and
+   produce an Encapsulated Response.
 
    Unreliable data transmission would allow the Oblivious Gateway
    Resource to return an unencrypted acknowledgement of receipt, buffer
