@@ -89,7 +89,7 @@ privacy. We describe these motivating properties below.
 
 ## Gateway Performance and Security
 
-In privacy-preserving data collection systems, it is important that client reports
+In some privacy-preserving data collection systems such as {{STAR}}, it is important that client reports
 containing their individual measurements are separated from any client identifying
 information, including their IP address. A protocol like the {{STAR}} proposal, which
 otherwise enforces privacy through filtering for heavy-hitters in the report data,
