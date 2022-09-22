@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-15T00:01:46.618456+00:00",
+  "timestamp": "2022-09-22T00:02:38.046147+00:00",
   "repo": "chris-wood/draft-unreliable-ohttp",
   "labels": [
     {
@@ -124,15 +124,15 @@
       "id": "I_kwDOH1ALCM5Q13tR",
       "title": "who requires acknowledgement",
       "url": "https://github.com/chris-wood/draft-unreliable-ohttp/issues/7",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "rillian",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "> STAR can use OHTTP to send client reports, but it requires the Oblivious Gateway Resource to produce an encrypted acknowledgement to the clients for every report.\r\n\r\nThe antecedent of \"it\" is ambiguous here. We should clarify that it's OHTTP requiring the encryped ack, not STAR. Maybe just \"but that requires\"?",
       "createdAt": "2022-08-30T20:55:53Z",
-      "updatedAt": "2022-08-30T20:55:53Z",
-      "closedAt": null,
+      "updatedAt": "2022-09-20T13:31:50Z",
+      "closedAt": "2022-09-20T13:31:50Z",
       "comments": []
     },
     {
@@ -526,24 +526,26 @@
       "id": "PR_kwDOH1ALCM4-hou5",
       "title": "Edit pass on STAR gateway considerations.",
       "url": "https://github.com/chris-wood/draft-unreliable-ohttp/pull/10",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "rillian",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Clarify how STAR would use OHTTP and how unreliable delivery helps.\r\n\r\nResolves https://github.com/chris-wood/draft-unreliable-ohttp/issues/7",
       "createdAt": "2022-09-07T16:46:16Z",
-      "updatedAt": "2022-09-13T21:38:07Z",
+      "updatedAt": "2022-09-20T13:31:49Z",
       "baseRepository": "chris-wood/draft-unreliable-ohttp",
       "baseRefName": "main",
       "baseRefOid": "3ff564b4a6de1604d5744f743df4640c9d786df4",
       "headRepository": "rillian/draft-unreliable-ohttp",
       "headRefName": "star-clarity",
-      "headRefOid": "53009c46109a50850a2d9307e0630882a4598283",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "9b62c9b2f36e4911cbdcc40dcf58c9d742f8cf45",
+      "closedAt": "2022-09-20T13:31:49Z",
+      "mergedAt": "2022-09-20T13:31:48Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "ca207707b757af6d48d806b34020654fa82c31d0"
+      },
       "comments": [],
       "reviews": [
         {
@@ -609,6 +611,46 @@
               "body": "> Do you mean that the PRIO shuffler or aggregator breaks the link between the client IP address and their report?\r\n\r\nNope! In Prio, each report is basically encrypted and never revealed in plaintext to an aggregator, so they leaking the IP address is not a problem.\r\n\r\nYour proposed alternate sounds good. I might say \"In _some_ privacy-preserving data collection systems, it can be important that...\"",
               "createdAt": "2022-09-13T21:38:06Z",
               "updatedAt": "2022-09-13T21:38:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH1ALCM5CY5hr",
+          "commit": {
+            "abbreviatedOid": "53009c4"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-20T13:29:37Z",
+          "updatedAt": "2022-09-20T13:29:38Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "```suggestion\r\nIn some privacy-preserving data collection systems such as {{STAR}}, it is important that client reports\r\n```",
+              "createdAt": "2022-09-20T13:29:37Z",
+              "updatedAt": "2022-09-20T13:29:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH1ALCM5CY59p",
+          "commit": {
+            "abbreviatedOid": "b7e8fd1"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-20T13:30:36Z",
+          "updatedAt": "2022-09-20T13:30:37Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "```suggestion\r\ninformation, including their IP address. Systems like {{STAR}}, which\r\notherwise enforce privacy through filtering for heavy-hitters in the report data,\r\ncan use OHTTP to send client reports to achieve this separation.\r\n```",
+              "createdAt": "2022-09-20T13:30:37Z",
+              "updatedAt": "2022-09-20T13:30:37Z"
             }
           ]
         }
