@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-22T00:02:38.046147+00:00",
+  "timestamp": "2022-11-10T00:01:39.370118+00:00",
   "repo": "chris-wood/draft-unreliable-ohttp",
   "labels": [
     {
@@ -158,6 +158,22 @@
           "updatedAt": "2022-09-02T13:21:49Z"
         }
       ]
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOH1ALCM5V-cQT",
+      "title": "Relay can lie about delivery",
+      "url": "https://github.com/chris-wood/draft-unreliable-ohttp/issues/11",
+      "state": "OPEN",
+      "author": "rillian",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "A point that came up at this week's IETF meeting, which should be added to the Security Considerations:\r\n\r\nBecause the gateway doesn't return an authenticated response, the relay can lie to the client about whether it actually is forwarding the request. That's part of what we mean by \"unreliable\" but it is a step down from what regular oblivious http provides. I think it's still a privacy improvement over regular http, although perhaps verifying a TLS cert is some reassurance to the client in that case that its message is getting through to an endpoint trusted by the target.",
+      "createdAt": "2022-11-09T16:55:23Z",
+      "updatedAt": "2022-11-09T16:55:23Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
