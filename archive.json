@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-11-10T00:01:39.370118+00:00",
+  "timestamp": "2022-11-27T00:01:26.098250+00:00",
   "repo": "chris-wood/draft-unreliable-ohttp",
   "labels": [
     {
@@ -171,9 +171,73 @@
       "labels": [],
       "body": "A point that came up at this week's IETF meeting, which should be added to the Security Considerations:\r\n\r\nBecause the gateway doesn't return an authenticated response, the relay can lie to the client about whether it actually is forwarding the request. That's part of what we mean by \"unreliable\" but it is a step down from what regular oblivious http provides. I think it's still a privacy improvement over regular http, although perhaps verifying a TLS cert is some reassurance to the client in that case that its message is getting through to an endpoint trusted by the target.",
       "createdAt": "2022-11-09T16:55:23Z",
-      "updatedAt": "2022-11-09T16:55:23Z",
+      "updatedAt": "2022-11-24T12:32:47Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "OWNER",
+          "body": "Note that this is not much different from a relay lying about a pre-decapsulation error from the gateway today. In the current OHTTP draft, gateway errors that are generated before decapsulation are not themselves encapsulated, which means that they can be simulated by the relay. The distinguishing property here is that, in the simulated pre-decapsulation error case, the client thinks an error occurred and may try again, whereas in the unreliable delivery case the client doesn't know if an error occurred and may not try again. For the target use cases, where client's don't care about delivery, this seems like a fine tradeoff, but it's worth mentioning in the security considerations.",
+          "createdAt": "2022-11-24T12:32:47Z",
+          "updatedAt": "2022-11-24T12:32:47Z"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOH1ALCM5XN8jr",
+      "title": "Explain OHTTP motivation",
+      "url": "https://github.com/chris-wood/draft-unreliable-ohttp/issues/12",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "One of the comments raised at IETF 115 was to make more clear why this functionality (one-way delivery) was necessarily tied to OHTTP and its oblivious properties. If we determine that it's not, then the suggestion was that this be targeted to HTTPBIS or similar for discussion. ",
+      "createdAt": "2022-11-24T12:30:19Z",
+      "updatedAt": "2022-11-24T12:30:19Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOH1ALCM5XN9l2",
+      "title": "Consider renaming draft to \"submission-only\" or \"one-way\" OHTTP",
+      "url": "https://github.com/chris-wood/draft-unreliable-ohttp/issues/13",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Unreliable apparently doesn't align with the mental model folks have.",
+      "createdAt": "2022-11-24T12:33:50Z",
+      "updatedAt": "2022-11-24T12:33:50Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 14,
+      "id": "I_kwDOH1ALCM5XN9qD",
+      "title": "Consider renaming to \"submission only\" or \"one way\" OHTTP",
+      "url": "https://github.com/chris-wood/draft-unreliable-ohttp/issues/14",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Unreliable apparently doesn't align with the mental model folks have.",
+      "createdAt": "2022-11-24T12:34:04Z",
+      "updatedAt": "2022-11-24T16:40:47Z",
+      "closedAt": "2022-11-24T12:34:46Z",
+      "comments": [
+        {
+          "author": "rillian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "This was a duplicate of #13.",
+          "createdAt": "2022-11-24T16:40:46Z",
+          "updatedAt": "2022-11-24T16:40:46Z"
+        }
+      ]
     }
   ],
   "pulls": [
