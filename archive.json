@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-11-27T00:01:26.098250+00:00",
+  "timestamp": "2022-11-29T00:01:46.501458+00:00",
   "repo": "chris-wood/draft-unreliable-ohttp",
   "labels": [
     {
@@ -171,15 +171,15 @@
       "labels": [],
       "body": "A point that came up at this week's IETF meeting, which should be added to the Security Considerations:\r\n\r\nBecause the gateway doesn't return an authenticated response, the relay can lie to the client about whether it actually is forwarding the request. That's part of what we mean by \"unreliable\" but it is a step down from what regular oblivious http provides. I think it's still a privacy improvement over regular http, although perhaps verifying a TLS cert is some reassurance to the client in that case that its message is getting through to an endpoint trusted by the target.",
       "createdAt": "2022-11-09T16:55:23Z",
-      "updatedAt": "2022-11-24T12:32:47Z",
+      "updatedAt": "2022-11-27T21:03:39Z",
       "closedAt": null,
       "comments": [
         {
           "author": "chris-wood",
           "authorAssociation": "OWNER",
-          "body": "Note that this is not much different from a relay lying about a pre-decapsulation error from the gateway today. In the current OHTTP draft, gateway errors that are generated before decapsulation are not themselves encapsulated, which means that they can be simulated by the relay. The distinguishing property here is that, in the simulated pre-decapsulation error case, the client thinks an error occurred and may try again, whereas in the unreliable delivery case the client doesn't know if an error occurred and may not try again. For the target use cases, where client's don't care about delivery, this seems like a fine tradeoff, but it's worth mentioning in the security considerations.",
+          "body": "Note that this is not much different from a relay lying about a pre-decapsulation error from the gateway today. In the current OHTTP draft, gateway errors that are generated before decapsulation are not themselves encapsulated, which means that they can be simulated by the relay. The distinguishing property here is that, in the simulated pre-decapsulation error case, the client thinks an error occurred and may try again, whereas in the unreliable delivery case the client doesn't know if an error occurred and may not try again. For the target use cases, where clients don't care about delivery, this seems like a fine tradeoff, but it's worth mentioning in the security considerations.",
           "createdAt": "2022-11-24T12:32:47Z",
-          "updatedAt": "2022-11-24T12:32:47Z"
+          "updatedAt": "2022-11-27T21:03:39Z"
         }
       ]
     },
