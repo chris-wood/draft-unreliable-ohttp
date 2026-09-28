@@ -5,8 +5,8 @@
 Oblivious HTTP Application Intermediation                       R. Giles
 Internet-Draft                                                     Brave
 Intended status: Informational                                C. A. Wood
-Expires: 24 March 2023                                        Cloudflare
-                                                       20 September 2022
+Expires: 1 April 2027                                         Cloudflare
+                                                       28 September 2026
 
 
                  An Unreliable Oblivious HTTP Extension
@@ -55,11 +55,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 March 2023.
+   This Internet-Draft will expire on 1 April 2027.
 
 Copyright Notice
 
-   Copyright (c) 2022 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -381,8 +381,8 @@ Table of Contents
                             Deprecated alias names for this type:  N/A
                             File extension(s):  N/A
                             Macintosh file type code(s):  N/A
-   Person and email address to contact for further information:  see Aut
-      hors' Addresses section
+   Person and email address to contact for further information:  see
+      Authors' Addresses section
    Intended usage:  COMMON
    Restrictions on usage:  N/A
    Author:  see Authors' Addresses section
@@ -393,9 +393,9 @@ Table of Contents
 7.1.  Normative References
 
    [OHTTP]    Thomson, M. and C. A. Wood, "Oblivious HTTP", Work in
-              Progress, Internet-Draft, draft-ietf-ohai-ohttp-04, 1
-              September 2022, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-ohai-ohttp-04>.
+              Progress, Internet-Draft, draft-ietf-ohai-ohttp-10, 25
+              August 2023, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-ohai-ohttp-10>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -411,14 +411,14 @@ Table of Contents
    [LOCALDP]  Erlingsson, Ú., Feldman, V., Mironov, I., Raghunathan, A.,
               Talwar, K., and A. Thakurta, "Amplification by Shuffling:
               From Local to Central Differential Privacy via Anonymity",
-              arXiv article, DOI 10.48550/ARXIV.1811.12469, 2018,
+              arXiv, DOI 10.48550/ARXIV.1811.12469, 2018,
               <https://doi.org/10.48550/ARXIV.1811.12469>.
 
-   [STAR]     Davidson, A., Sahib, S. K., and P. Snyder, "STAR:
-              Distributed Secret Sharing for Private Threshold
+   [STAR]     Davidson, A., Sahib, S. K., Snyder, P., and C. A. Wood,
+              "STAR: Distributed Secret Sharing for Private Threshold
               Aggregation Reporting", Work in Progress, Internet-Draft,
-              draft-dss-star-01, 11 July 2022,
-              <https://datatracker.ietf.org/doc/html/draft-dss-star-01>.
+              draft-dss-star-02, 24 October 2022,
+              <https://datatracker.ietf.org/doc/html/draft-dss-star-02>.
 
 Acknowledgments
 
